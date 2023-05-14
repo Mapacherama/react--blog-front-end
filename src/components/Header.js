@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <header
-    className='bg-blue-900 shadow-lg text-white shadow-gray-900 flex justify-between py-4'
+    className='bg-blue-700 shadow-lg text-white shadow-gray-900 flex justify-between py-4'
     >
         <div className="flex-shrink-0 px-4 flex items-center">
             <SidePanel visible={showSidePanel} />
