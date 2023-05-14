@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { Header } from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main className="p-4">
+        <div className='flex flex-col items-center space-y-4'>
+        <p className="text-lg text-gray-700">This is the main content area.</p>
+        <button className="px-4 py-2 mt-4 bg-blue-500 text-white rounded hover:bg-blue-700">
+          Click Me
+        </button>
+        </div>
+      </main>
     </div>
   );
 }
-
 export default App;
