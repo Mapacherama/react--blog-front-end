@@ -3,10 +3,10 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTachometerAlt, faFileInvoice, faUsersCog, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faHomeAlt, faNewspaper, faEnvelope, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 // Add the icons to the library
-library.add(faTachometerAlt, faFileInvoice, faUsersCog, faUsers);
+library.add(faHomeAlt, faFolder, faNewspaper);
 
 function SidePanel() {
   const [visible, setVisible] = useState(false);
@@ -42,32 +42,43 @@ function SidePanel() {
                 onClick={() => navigateTo('/')}
                 className="p-link layout-topbar-button mt-2 side-panel-button"
               >
-                <FontAwesomeIcon icon={faTachometerAlt} className="bigger-size" />
-                <span> Dashboard</span>
+                <FontAwesomeIcon icon={faHomeAlt} className="bigger-size" />
+                <span>Home</span>
+              </button>
+
+              <button
+                onClick={() => navigateTo('/category')}
+                className="p-link layout-topbar-button mt-2 side-panel-button"
+              >
+                <FontAwesomeIcon icon={faFolder} className="bigger-size" />
+                <span>Category</span>
               </button>
     
               <button
-                onClick={() => navigateTo('/customeroverview')}
+                onClick={() => navigateTo('/blog')}
                 className="p-link mt-2 layout-topbar-button side-panel-button"
               >
-                <FontAwesomeIcon icon="users" className="bigger-size" />
+                <FontAwesomeIcon icon={faNewspaper} className="bigger-size" />
                 <span className="ml-2">Customers</span>
               </button>
     
+
               <button
-                onClick={() => navigateTo('/invoiceoverview')}
-                className="p-link layout-topbar-button mt-2 side-panel-button"
-              >
-                <FontAwesomeIcon icon={faFileInvoice} className="bigger-size" />
-                <span>Invoices</span>
-              </button>
-              <button
-                onClick={() => navigateTo('/teamoverview')}
+                onClick={() => navigateTo('/about')}
                 className="p-link layout-topbar-button mt-2 mb-4 side-panel-button"
               >
-                <FontAwesomeIcon icon={faUsersCog} className="bigger-size" />
-                <span>Teams</span>
+                <FontAwesomeIcon icon={faInfoCircle} className="bigger-size" />
+                <span>About</span>
               </button>
+
+              <button
+                onClick={() => navigateTo('/contact')}
+                className="p-link layout-topbar-button mt-2 mb-4 side-panel-button"
+              >
+                <FontAwesomeIcon icon={faEnvelope} className="bigger-size" />
+                <span>Contact</span>
+              </button>
+
               <div className="border-t-4 border-blue-900 mt-11">
                 <button
                   onClick={() => navigateTo('/login')}
