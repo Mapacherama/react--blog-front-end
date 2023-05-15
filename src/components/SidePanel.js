@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,17 +10,23 @@ import { faFolder, faHomeAlt, faNewspaper, faEnvelope, faInfoCircle } from '@for
 library.add(faHomeAlt, faFolder, faNewspaper);
 
 function SidePanel() {
-  const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const navigateTo = (path) => {
     window.location.href = path;
-    setVisible(false);
+    setIsVisible(false);
   };
+
+const handleButtonClick = () => {
+      setIsVisible(!isVisible);
+    };
 
   useEffect(() => {
     const handleRouteChange = () => {
-      setVisible(false);
+      setIsVisible(false);
     };
+
+    
 
     window.addEventListener('popstate', handleRouteChange);
 
@@ -33,10 +40,11 @@ function SidePanel() {
           <Button
             icon="pi pi-bars"
             className="p-button-text"
-            onClick={setVisible}
+            onClick={handleButtonClick}
             style={{ display: '/login' !== window.location.pathname ? 'block' : 'none' }}
           />
-          <Sidebar visible={visible} onHide={() => setVisible(false)} position="left">
+          <CSSTransition in={isVisible} classNames="fade" timeout={300}>
+          <Sidebar visible={isVisible} onHide={() => setIsVisible(false)} position="left">
             <div className="flex-sidebar pt-4">
               <button
                 onClick={() => navigateTo('/')}
@@ -90,6 +98,7 @@ function SidePanel() {
               </div>
             </div>
           </Sidebar>
+          </CSSTransition>
         </div>
       );
     }

@@ -6,6 +6,7 @@ import { Blog } from "./components/Blog";
 import { Category } from "./components/Category";
 import { Contact } from "./components/Contact";
 import { Header } from "./components/Header";
+import { LoginPage } from "./components/Login";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/category" element={<Category />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </main>
       </div>
