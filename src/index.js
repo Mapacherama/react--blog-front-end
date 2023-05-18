@@ -10,7 +10,7 @@ import 'primeflex/primeflex.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-axios.defaults.baseURL = 'http://localhost:3000/';
+axios.defaults.baseURL = 'http://localhost:5000/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
