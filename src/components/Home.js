@@ -1,20 +1,15 @@
+// Home.js
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchBlogs } from '../actions/blogActions';
-
+import BlogStore from '../store/BlogStore';
 
 const Home = () => {
-  const dispatch = useDispatch();
-  console.log(dispatch)
+  const blogStore = BlogStore();
 
   useEffect(() => {
-    dispatch(fetchBlogs());
-  }, [dispatch]);
+    blogStore.fetchBlogs();
+  }, []);
 
-  // Access the blogs state from the Redux store
-  const blogs = useSelector((state) => state.blogReducer.blogs);
-  const loading = useSelector((state) => state.blogReducer.loading);
-  const error = useSelector((state) => state.blogReducer.error);
+  const { blogs, loading, error } = blogStore;
 
   // Render the blogs data or loading/error messages
   return (
@@ -34,4 +29,4 @@ const Home = () => {
   );
 };
 
-export  { Home };
+export { Home };
