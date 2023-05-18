@@ -1,27 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBlogs } from '../actions/blogActions';
+
 
 const Home = () => {
-  // Sample data for featured blog posts
-  const featuredPosts = [
-    { id: 1, title: 'Title of Featured Post 1', date: 'May 1, 2023' },
-    { id: 2, title: 'Title of Featured Post 2', date: 'May 5, 2023' },
-    { id: 3, title: 'Title of Featured Post 3', date: 'May 10, 2023' },
-  ];
+  const dispatch = useDispatch();
+  console.log(dispatch)
 
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
+
+  // Access the blogs state from the Redux store
+  const blogs = useSelector((state) => state.blogReducer.blogs);
+  const loading = useSelector((state) => state.blogReducer.loading);
+  const error = useSelector((state) => state.blogReducer.error);
+
+  // Render the blogs data or loading/error messages
   return (
     <div>
-      <h1>Welcome to Our Blog</h1>
-      <h2>Featured Posts</h2>
-      <ul>
-        {featuredPosts.map((post) => (
-          <li key={post.id}>
-            <h3>{post.title}</h3>
-            <p>Published on {post.date}</p>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error: {error.message}</div>
+      ) : (
+        <div>
+          {blogs.map((blog) => (
+            <div key={blog.id}>{blog.title}</div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-export {Home};
+export  { Home };
